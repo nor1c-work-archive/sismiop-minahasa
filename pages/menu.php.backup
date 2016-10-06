@@ -1,0 +1,138 @@
+<?php
+if ($_SESSION['ROLE']!="LOKET") {
+echo '
+
+                        <li>
+                            <a href="/admaresi/sismiop/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard </a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-home fa-fw"></i> Pendataan<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admaresi/sismiop/pages/persiapan.php">Persiapan</a>
+                                </li>
+                                <li>
+                                    <a href="/pages/pendataanOP.php">Pendataan Objek Pajak</a>
+                                </li>
+                                <li>
+                                    <a href="/pages/lappendataanOP.php">Laporan Pendataan OP</a>
+                                </li>
+                                <li>
+                                    <a href="/pages/flagNJOPTKP.php">Pemberian Flag NJOPTKP</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-bookmark fa-fw"></i>Penilaian<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/pages/sketNJOP.php">Surat Ket. NJOP</a>
+                                </li>
+							</ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bookmark fa-fw"></i>Penetapan<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/pages/tapbayarelek.php">Tempat Pembayaran Elektronik</a>
+                                </li>
+                                <li>
+                                    <a href="/pages/rekamtrxjb.php">Perekaman Transaksi Jual Beli</a>
+                                </li>
+                                <li>
+                                    <a href="/pages/lappendataanOP.php">Laporan Pendataan OP</a>
+                                </li>
+                                <li>
+                                    <a href="/pages/flagNJOPTKP.php">Pemberian Flag NJOPTKP</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-book fa-fw"></i>Referensi<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="refwilayah.php">Wilayah</a>
+                                </li>
+                                <li>
+                                    <a href="refkepegawaian.php">Kepegawaian</a>
+                                </li>
+                                <li>
+                                    <a href="#">Manajemen Pengguna</a>
+                                </li>
+                                <li>
+                                    <a href="#">Manajemen Pengguna</a>
+                                </li>                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Monitoring<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admaresi/sismiop/pages/monitoring">Pencarian Data</a>
+                                </li>
+                                <li>
+                                    <a href="/admaresi/sismiop/pages/monitoring/penerimaanpembayaran.php">Penerimaan Pembayaran</a>
+                                </li>
+                                <li>
+                                    <a href="/admaresi/sismiop/pages/monitoring/penerimaanharianbank.php">Penerimaan Harian Bank</a>
+                                </li>
+                             </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-copy fa-fw"></i> Cetak Massal<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admaresi/sismiop/pages/dhkp.php">DHKP</a>
+                                </li>
+								<li>
+                                    <a href="/admaresi/sismiop/pages/carisppt.php">Cari SPPT</a>
+                                </li>
+                                <li>
+                                    <a href="/admaresi/sismiop/pages/#">Cetak SPPT</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>';
+                      }
+
+                      else if ($_SESSION['ROLE']=="LOKET") { ?>
+                          <li>
+                                          <a href="#"><i class="fa fa-money fa-fw"></i> Pembayaran<span class="fa arrow"></span></a>
+                                          <ul class="nav nav-second-level">
+                                              <li>
+                                                  <a href="/admaresi/sismiop/pages/pembayaran/">Pembayaran PBB per OP</a>
+                                              </li>
+                                          </ul>
+                                          <!-- /.nav-second-level -->
+                                      </li>
+                        <?php } if ($_SESSION['ROLE']!="LOKET") {
+
+                        echo '
+                        <li>
+                          <a href="#"><i class="fa fa-money fa-fw"></i> Pembayaran<span class="fa arrow"></span></a>
+                          <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/admaresi/sismiop/pages/pembatalan/index.php">Pembatalan SSPD</a>
+                            </li>
+                            <li>
+                                <a href="/admaresi/sismiop/pages/pembatalansppt/index.php">Pembatalan SPPT</a>
+                            </li>
+                            <li>
+                                <a href="/admaresi/sismiop/pages/pembayaran/">Pembayaran PBB per OP</a>
+                            </li>
+                          </ul>
+                        </li>';
+                      } if ($_SESSION['ROLE']=="ADMINISTRATOR") {
+                        echo '<li>
+                                        <a href="#"><i class="fa fa-money fa-fw"></i> User Management<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="/admaresi/sismiop/pages/userlist.php">User List</a>
+                                            </li>
+                                        </ul>
+                                        <!-- /.nav-second-level -->
+                                    </li>
+'; } ?>

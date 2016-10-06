@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+  </head>
+  <body>
+    <!-- Button trigger modal -->
+
+
+      <form class="" action="index.html" method="post">
+        <input type="checkbox" name="bayar" value="Tes">
+        <input type="checkbox" name="bayar" value="Tes4">
+        <input type="checkbox" name="bayar" value="Tes2">
+        <input type="checkbox" name="bayar" value="Tes3">
+        <input type="checkbox" name="bayar" value="OK">
+
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          Launch demo modal
+        </button>
+      </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <script type="text/javascript">
+              $(document).ready(function() {
+                $("button").click(function() {
+                  var bayardata = [];
+                  $.each($("input[name='bayar']:checked"), function() {
+                    bayardata.push($(this).val());
+                  });
+                  // alert("Tes : " + bayardata.join(", "));
+                  "Tes : " + bayardata.join(", ");
+                });
+              });
+            </script>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../bower_components/js/modal.js"></script>
+  </body>
+</html>
