@@ -52,9 +52,9 @@ if (isset($_SESSION['NM_LOGIN'])) {
     <script src="../dist/js/sb-admin-2.js"></script>
 
 </body>
-    
+
 </html>
-<?php 
+<?php
         $computer_name = gethostbyaddr($_SERVER['REMOTE_ADDR']); if(isset($_POST['login'])) {
         $_IP_SERVER = $_SERVER['SERVER_ADDR'];
         $_IP_ADDRESS = $_SERVER['REMOTE_ADDR'];
@@ -81,7 +81,12 @@ if (isset($_SESSION['NM_LOGIN'])) {
 
         $NM_LOGIN=$_POST['NM_LOGIN'];
         $PASSWORD=md5($_POST['PASSWORD']);
-        $check_user="select * from DAT_LOGIN WHERE NM_LOGIN='$NM_LOGIN'AND PASSWORD='$PASSWORD' AND STATUS='AKTIF' AND MAC_ADDRESS='$mac' AND COMPUTER_NAME='$computer_name'";
+        $check_user="select * from DAT_LOGIN WHERE
+          NM_LOGIN='$NM_LOGIN' AND
+          PASSWORD='$PASSWORD' AND
+          STATUS='AKTIF'
+          ";
+        // MAC_ADDRESS='$mac' AND COMPUTER_NAME='$computer_name'
       	$s = mysqli_query($conn, $check_user) or die (mysqli_error($conn));
 
         if($row=mysqli_fetch_assoc($s)) {

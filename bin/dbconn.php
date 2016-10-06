@@ -3,7 +3,7 @@
 // $c = oci_connect('pbb', 'pbb', 'localhost/XE');
 
 // #MariaDB Conn
-$servername = "localhost";
+$servername = "192.168.0.109";
 $username = "root";
 $password = "root";
 $dbname = "pbb";

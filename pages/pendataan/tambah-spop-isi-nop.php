@@ -196,7 +196,7 @@ if ($_SESSION['ROLE']=="ADMINISTRATOR") { ?>
                 success: function(msg){
                     $("#kelurahan").html(msg);
                 }
-            });    
+            });
             });
         });
     </script>
@@ -215,7 +215,7 @@ if ($_SESSION['ROLE']=="ADMINISTRATOR") { ?>
                         if(msg == ''){
                             alert('Tidak ada kode blok pada kelurahan ini');
                         } else {
-                            $("#blok").html(msg);                                                     
+                            $("#blok").html(msg);
                         }
                             $("#imgLoad").hide();
                         }

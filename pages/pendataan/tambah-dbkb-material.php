@@ -163,14 +163,22 @@ if ($_SESSION['ROLE']=="ADMINISTRATOR") {
                                         <tr>
                                           <td style="width:30%;">Kode Pekerjaan</td>
                                           <td style="width:50%;">
-                                            <input type="text" placeholder="Kode Pekerjaan" name="KD_PEKERJAAN" value="" size="50" class="form-control" required>
+                                            <select id="pekerjaan" class="form-control" name="KD_PEKERJAAN">
+                                              <option selected readonly disabled>PILIH PEKERJAAN</option>
+                                              <?php $sql = "select * from PEKERJAAN"; $sqla = mysqli_query($conn, $sql); while ($dat_pek = mysqli_fetch_assoc($sqla)) { ?>
+                                                <option value="<?=$dat_pek['KD_PEKERJAAN']?>"><?=$dat_pek['KD_PEKERJAAN'].' - '.$dat_pek['NM_PEKERJAAN']?></option>
+                                              <?php } ?>
+                                            </select>
                                           </td>
                                         </tr>
 
                                         <tr>
                                           <td style="width:30%;">Kode Kegiatan</td>
                                           <td style="width:50%;">
-                                            <input type="text" placeholder="Kode Kegiatan" name="KD_KEGIATAN" value="" size="50" class="form-control" required>
+                                            <select id="kegiatan" name="KD_KEGIATAN" class="form-control">
+                                                <option selected hidden readonly="true">PILIH KEGIATAN</option>
+                                                <!-- KEGIATAN -->
+                                            </select>
                                           </td>
                                         </tr>
 
@@ -235,6 +243,23 @@ if ($_SESSION['ROLE']=="ADMINISTRATOR") {
                 responsive: true
         });
     });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#pekerjaan").change(function(){
+            var KD_PEKERJAAN = $("#pekerjaan").val();
+            $("#imgLoad").show("");
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                url: "pekerjaan_kegiatan.php",
+                data: "pekerjaan="+KD_PEKERJAAN,
+                success: function(msg){
+                    $("#kegiatan").html(msg);
+                }
+            });
+            });
+        });
     </script>
     <!-- <script type="text/javascript">
     var container = document.getElementsByClassName("nops")[0];
