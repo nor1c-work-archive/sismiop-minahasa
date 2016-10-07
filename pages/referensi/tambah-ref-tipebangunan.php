@@ -8,8 +8,26 @@ if(!$_SESSION['NM_LOGIN'])
 }
 
 if ($_SESSION['ROLE']=="ADMINISTRATOR") {
-// 1. Get $hal from url
+
+  if (isset($_POST['simpan'])) {
+    $TIPE_BNG = $_POST['TIPE_BNG'];
+    $NM_TIPE_BNG = $_POST['NM_TIPE_BNG'];
+    $LUAS_MIN_TIPE_BNG = $_POST['LUAS_MIN_TIPE_BNG'];
+    $LUAS_MAX_TIPE_BNG = $_POST['LUAS_MAX_TIPE_BNG'];
+    $FAKTOR_PEMBAGI_TIPE_BNG = $_POST['FAKTOR_PEMBAGI_TIPE_BNG'];
+
+    $insert = "INSERT INTO TIPE_BANGUNAN SET TIPE_BNG='$TIPE_BNG', NM_TIPE_BNG='$NM_TIPE_BNG', LUAS_MIN_TIPE_BNG='$LUAS_MIN_TIPE_BNG', LUAS_MAX_TIPE_BNG='$LUAS_MAX_TIPE_BNG', FAKTOR_PEMBAGI_TIPE_BNG='$FAKTOR_PEMBAGI_TIPE_BNG'";
+    if (mysqli_query($conn, $insert) or die (mysqli_error($conn))) {
+      $_SESSION['notif'] = "Data Tipe Bangunan Berhasil Disimpan";
+      header("Location: ref-tipebangunan.php");
+    } else {
+      $_SESSION['gagal'] = "Data Tipe Bangunan Gagal Disimpan";
+      header("Location: ref-tipebangunan.php");
+    }
+  }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +51,7 @@ if ($_SESSION['ROLE']=="ADMINISTRATOR") {
     <link href="../../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
-    <!-- <link href="../../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet"> -->
+    <link href="../../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
@@ -41,8 +59,6 @@ if ($_SESSION['ROLE']=="ADMINISTRATOR") {
     <!-- Custom Fonts -->
     <link href="../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Custom Fonts -->
-    <link href="../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -62,30 +78,17 @@ if ($_SESSION['ROLE']=="ADMINISTRATOR") {
     <script src="../../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="../../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('#example').DataTable( {
-          "pagingType": "full_numbers",
-          responsive: true
-        } );
-      } );
-    </script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-
     <!-- Custom Theme JavaScript -->
     <script src="../../dist/js/sb-admin-2.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-
 </head>
 
 <body>
 
     <div id="wrapper">
 
-      <?php include "../header2.php"; ?>
+      <?php include "../header2.php";?>
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
@@ -127,62 +130,58 @@ if ($_SESSION['ROLE']=="ADMINISTRATOR") {
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            Home &gt; Referensi &gt; Referensi Tipe Bangunan
+                            Home &gt; Referensi &gt; Referensi Tipe Bangunan &gt; Tambah Referensi Tipe Bangunan
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                         	<div>
-                        	  <?php if (isset($_SESSION['notif'])) { ?>
-                              <div class="alert alert-success">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>Success!</strong> <?php echo $_SESSION['notif']; unset($_SESSION['notif']); ?>
-                              </div>
-                            <?php } else if (isset($_SESISON['gagal'])) { ?>
-                              <div class="alert alert-danger">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>Error!</strong> <?php echo $_SESSION['gagal']; unset($_SESSION['gagal']); ?>
-                              </div>
-                            <?php } ?>
                             <div class="table-responsive">
-                                <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                    <thead>
+                              <form class="" action="<?=$_SERVER['PHP_SELF']?>" method="post">
+                                    <table class="table table-bordered">
                                         <tr>
-                                            <th>No</th>
-                                            <th>Tipe Bangunan</th>
-                                            <th>Nama Tipe Bangunan</th>
-                                            <th>Luas Min</th>
-                                            <th>Luas Max</th>
-                                            <th>Faktor Pembagi</th>
-                                            <th width="100">Modify</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                      <?php
-                                        $no = 1;
-                                        $user = "SELECT * FROM TIPE_BANGUNAN";
-                                        $userc = mysqli_query($conn, $user);
-                                        while ($data = mysqli_fetch_assoc($userc)) {
-                                        ?>
-                                        <tr>
-                                          <td><?=$no++?></td>
-                                          <td><?=$data['TIPE_BNG']?></td>
-                                          <td><?=$data['NM_TIPE_BNG']?></td>
-                                          <td><?=$data['LUAS_MIN_TIPE_BNG']?></td>
-                                          <td><?=$data['LUAS_MAX_TIPE_BNG']?></td>
-                                          <td><?=$data['FAKTOR_PEMBAGI_TIPE_BNG']?></td>
-                                          <td>
-                                            <center>
-                                              <a class="btn btn-success btn-sm" href="edit-ref-tipebangunan.php?refid=<?=$data['TIPE_BNG']?>">Edit</a>
-                                              <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure ?')" href="delete-ref-tipebangunan.php?refid=<?=$data['TIPE_BNG']?>">Delete</a>
-                                            </center>
+                                          <td style="width:30%;">Tipe Bangunan</td>
+                                          <td style="width:50%;">
+                                            <input type="text" placeholder="Tipe Bangunan" name="TIPE_BNG" value="" size="50" class="form-control" required>
                                           </td>
                                         </tr>
-                                        <?php }
-                                      ?>
-                                    </tbody>
-                                   </table>
 
-                                <a class="btn btn-primary btn-sm" href="tambah-ref-tipebangunan.php">Tambah Referensi Tipe Bangunan</a>
+                                        <tr>
+                                          <td style="width:30%;">Nama Tipe Bangunan</td>
+                                          <td style="width:50%;">
+                                            <input type="text" placeholder="Nama Tipe Bangunan" name="NM_TIPE_BNG" value="" size="50" class="form-control" required>
+                                          </td>
+                                        </tr>
+
+                                        <tr>
+                                          <td style="width:30%;">Luas Minimum Tipe Bangunan</td>
+                                          <td style="width:50%;">
+                                            <input type="text" placeholder="Luas Minimum Tipe Bangunan" name="LUAS_MIN_TIPE_BNG" value="" size="50" class="form-control" required>
+                                          </td>
+                                        </tr>
+
+                                        <tr>
+                                          <td style="width:30%;">Luas Maximum Tipe Bangunan</td>
+                                          <td style="width:50%;">
+                                            <input type="text" placeholder="Luas Maximum Tipe Bangunan" name="LUAS_MAX_TIPE_BNG" value="" size="50" class="form-control" required>
+                                          </td>
+                                        </tr>
+
+                                        <tr>
+                                          <td style="width:30%;">Faktor Pembagi Tipe Bangunan</td>
+                                          <td style="width:50%;">
+                                            <input type="text" placeholder="Faktor Pembagi Tipe Bangunan" name="FAKTOR_PEMBAGI_TIPE_BNG" value="" size="50" class="form-control" required>
+                                          </td>
+                                        </tr>
+
+                                        <tr>
+                                          <td>
+                                          </td>
+                                          <td>
+                                            <input type="submit" class="btn btn-primary" name="simpan" value="Simpan">
+                                            <a onclick="history.go(-1);" class="btn btn-default">Batal</a>
+                                          </td>
+                                        </tr>
+                                   </table>
                             </div>
                           </div>
                             <!-- /.table-responsive -->

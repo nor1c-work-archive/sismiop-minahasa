@@ -103,6 +103,9 @@
             <li>
                 <a href="/admaresi/sismiop/pages/referensi/ref-pekerjaankegiatan.php">Pekerjaan Kegiatan</a>
             </li>
+            <li>
+                <a href="/admaresi/sismiop/pages/referensi/ref-tipebangunan.php">Tipe Bangunan</a>
+            </li>
         </ul>
       </li>
       <li>
