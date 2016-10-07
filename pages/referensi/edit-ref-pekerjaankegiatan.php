@@ -8,20 +8,17 @@ if(!$_SESSION['NM_LOGIN'])
 }
 
 if (isset($_GET['edit']) || isset($_POST['edit'])) {
-  $KD_PROPINSI = $_POST['KD_PROPINSI'];
-  $KD_DATI2 = $_POST['KD_DATI2'];
-  $THN_DBKB_MATERIAL = $_POST['THN_DBKB_MATERIAL'];
   $KD_PEKERJAAN = $_POST['KD_PEKERJAAN'];
   $KD_KEGIATAN = $_POST['KD_KEGIATAN'];
-  $NILAI_DBKB_MATERIAL = $_POST['NILAI_DBKB_MATERIAL'];
+  $NM_KEGIATAN = $_POST['NM_KEGIATAN'];
 
-  $updq = "update DBKB_MATERIAL SET NILAI_DBKB_MATERIAL='$NILAI_DBKB_MATERIAL' WHERE KD_PROPINSI='$KD_PROPINSI' and KD_DATI2='$KD_DATI2' and KD_PEKERJAAN='$KD_PEKERJAAN' and KD_KEGIATAN='$KD_KEGIATAN'";
-  if (mysqli_query($conn, $updq) or die(mysqli_error($conn))) {
-    $_SESSION['notif'] = "Data DBKB Material Berhasil Diupdate";
-    header("Location: dbkb-material.php");
+  $updq = "update PEKERJAAN_KEGIATAN SET NM_KEGIATAN='$NM_KEGIATAN' WHERE KD_PEKERJAAN='$KD_KEGIATAN' and KD_KEGIATAN='$KD_KEGIATAN'";
+  if (mysqli_query($conn, $updq)) {
+    $_SESSION['notif'] = "Data Pekerjaan Berhasil Diupdate";
+    header("Location: ref-pekerjaankegiatan.php");
   } else {
-    $_SESSION['gagal'] = "Data DBKB Material Gagal Diupdate";
-    header("Location: dbkb-material.php");
+    $_SESSION['notif'] = "Data Pekerjaan Gagal Diupdate";
+    header("Location: ref-pekerjaankegiatan.php");
   }
 }
 
@@ -131,7 +128,7 @@ if (isset($_GET['edit']) || isset($_POST['edit'])) {
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Edit DBKB Material</h1>
+                    <h1 class="page-header">Edit Referensi Pekerjaan Kegiatan</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -143,75 +140,44 @@ if (isset($_GET['edit']) || isset($_POST['edit'])) {
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            Home &gt; Referensi &gt; DBKB Material &gt; Edit DBKB Material
+                            Home &gt; Referensi &gt; Referensi Pekerjaan Kegiatan &gt; Edit Referensi Pekerjaan Kegiatan
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <form class="" action="<?=$_SERVER['PHP_SELF']?>" method="post">
                                 <?php
-                                  list($KD_PROPINSI, $KD_DATI2, $THN_DBKB_MATERIAL, $KD_PEKERJAAN, $KD_KEGIATAN) = explode(".", $_GET['refid']);
-
-                                  $se = "select * from DBKB_MATERIAL where KD_PROPINSI = '".$KD_PROPINSI."' and KD_DATI2='".$KD_DATI2."' and THN_DBKB_MATERIAL='".$THN_DBKB_MATERIAL."' and KD_PEKERJAAN='".$KD_PEKERJAAN."' and KD_KEGIATAN='".$KD_KEGIATAN."'";
+                                  $kd = $_GET['refid'];
+                                  list($KD_PEKERJAAN, $KD_KEGIATAN) = explode(".", $_GET['refid']);
+                                  $se = "select * from PEKERJAAN_KEGIATAN where KD_PEKERJAAN = '".$KD_PEKERJAAN."' and KD_KEGIATAN='".$KD_KEGIATAN."'";
                                   $sec = mysqli_query($conn, $se);
                                   while ($data = mysqli_fetch_assoc($sec)) { ?>
                                       <div class="table-responsive">
                                       <table class="table table-bordered">
+                                        <input type="hidden" name="id" value="<?=$kd?>">
                                       <tr>
                                         <td>
-                                          Kode Propinsi
+                                          Kode Pekerjaan
                                         </td>
                                         <td>
-                                          <input type="text" name="KD_PROPINSI" value="<?=$data['KD_PROPINSI']?>" style="width:40%;" class="form-control" readonly="true">
+                                          <input type="text" name="KD_PEKERJAAN" value="<?=$data['KD_PEKERJAAN']?>" style="width:40%;" class="form-control" readonly="true">
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          Kode Kegiatan
+                                        </td>
+                                        <td>
+                                          <input type="text" name="KD_KEGIATAN" value="<?=$data['KD_KEGIATAN']?>" style="width:40%;" class="form-control" readonly="true">
                                         </td>
                                       </tr>
 
                                       <tr>
                                         <td>
-                                          Kode Dati II
+                                          Nama Kegiatan
                                         </td>
                                         <td>
-                                          <input type="text" name="KD_DATI2" value="<?=$data['KD_DATI2']?>" size="40" class="form-control" readonly>
-                                        </td>
-                                      </tr>
-
-                                      <tr>
-                                        <td>
-                                          Tahun DBKB Material
-                                        </td>
-                                        <td>
-                                          <input type="text" name="THN_DBKB_MATERIAL" value="<?=$data['THN_DBKB_MATERIAL']?>" size="40" class="form-control" readonly>
-                                        </td>
-                                      </tr>
-
-                                      <tr>
-                                        <td>
-                                          Pekerjaan
-                                        </td>
-                                        <td>
-                                            <?php $sql = "select * from PEKERJAAN where KD_PEKERJAAN='".$KD_PEKERJAAN."'"; $sqla = mysqli_query($conn, $sql); while ($dat_pek = mysqli_fetch_assoc($sqla)) { ?>
-                                              <input type="text" name="KD_PEKERJAAN" value="<?=$dat_pek['KD_PEKERJAAN']?>" class="form-control" readonly>
-                                            <?php } ?>
-                                        </td>
-                                      </tr>
-
-                                      <tr>
-                                        <td>
-                                          Kegiatan
-                                        </td>
-                                        <td>
-                                            <?php $sql = "select * from PEKERJAAN_KEGIATAN where KD_PEKERJAAN='".$KD_PEKERJAAN."' and KD_KEGIATAN='".$KD_KEGIATAN."'"; $sqla = mysqli_query($conn, $sql); while ($dat_pek = mysqli_fetch_assoc($sqla)) { ?>
-                                              <input type="text" name="KD_KEGIATAN" value="<?=$dat_pek['KD_KEGIATAN']?>" class="form-control" readonly>
-                                            <?php } ?>
-                                        </td>
-                                      </tr>
-
-                                      <tr>
-                                        <td>
-                                          Nilai DBKB Material
-                                        </td>
-                                        <td>
-                                          <input type="text" name="NILAI_DBKB_MATERIAL" value="<?=$data['NILAI_DBKB_MATERIAL']?>" size="40" class="form-control">
+                                          <input type="text" name="NM_KEGIATAN" value="<?=$data['NM_KEGIATAN']?>" size="40" class="form-control">
                                         </td>
                                       </tr>
 
@@ -221,7 +187,7 @@ if (isset($_GET['edit']) || isset($_POST['edit'])) {
                                         </td>
                                         <td>
                                           <input type="submit" class="btn btn-primary" name="edit" value="Simpan">
-                                          <a href="dbkb-material.php" class="btn btn-default">Batal</a>
+                                          <a href="ref-pekerjaankegiatan.php" class="btn btn-default">Batal</a>
                                         </td>
                                       </tr>
                                     </table>
@@ -280,23 +246,6 @@ if (isset($_GET['edit']) || isset($_POST['edit'])) {
                 responsive: true
         });
     });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("#pekerjaan").change(function(){
-            var KD_PEKERJAAN = $("#pekerjaan").val();
-            $("#imgLoad").show("");
-            $.ajax({
-                type: "POST",
-                dataType: "html",
-                url: "pekerjaan_kegiatan.php",
-                data: "pekerjaan="+KD_PEKERJAAN,
-                success: function(msg){
-                    $("#kegiatan").html(msg);
-                }
-            });
-            });
-        });
     </script>
     <!-- <script type="text/javascript">
     var container = document.getElementsByClassName("nops")[0];

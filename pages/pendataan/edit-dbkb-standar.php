@@ -158,7 +158,6 @@ if (isset($_GET['edit']) || isset($_POST['edit'])) {
                                   while ($data = mysqli_fetch_assoc($sec)) { ?>
                                       <div class="table-responsive">
                                       <table class="table table-bordered">
-                                        <input type="hidden" name="id" value="<?=$kd?>">
                                       <tr>
                                         <td>
                                           Kode Propinsi
@@ -173,7 +172,7 @@ if (isset($_GET['edit']) || isset($_POST['edit'])) {
                                           Kode Dati II
                                         </td>
                                         <td>
-                                          <input type="text" name="KD_DATI2" value="<?=$data['KD_DATI2']?>" size="40" class="form-control" readonly>
+                                          <input type="text" name="KD_DATI2" value="<?=$data['KD_DATI2']?>" size="40" style="width:40%;" class="form-control" readonly>
                                         </td>
                                       </tr>
 
@@ -182,7 +181,7 @@ if (isset($_GET['edit']) || isset($_POST['edit'])) {
                                           Tahun DBKB Standar
                                         </td>
                                         <td>
-                                          <input type="text" name="THN_DBKB_STANDARD" value="<?=$data['THN_DBKB_STANDARD']?>" size="40" class="form-control" readonly>
+                                          <input type="text" name="THN_DBKB_STANDARD" value="<?=$data['THN_DBKB_STANDARD']?>" size="40" style="width:40%;" class="form-control" readonly>
                                         </td>
                                       </tr>
 

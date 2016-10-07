@@ -145,6 +145,104 @@ if ($_SESSION['ROLE']=="LOKET") {
                                 <div class="clearfix"></div>
                             </div>
                         </a>
+                        <a href="ref-jenispelayanan.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Jenis Pelayanan</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-status-wp.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Status Wajib Pajak</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-jenisbangunan.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Jenis Bangunan</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-kondisibangunan.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Kondisi Bangunan</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-konstruksi.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Konstruksi</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-atap.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Atap</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-dinding.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Dinding</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-lantai.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Lantai</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-langit.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Langit-Langit</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-finishingkolam.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Finishing Kolam</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-bahanpagar.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Bahan Pagar</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-pekerjaan.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Pekerjaan</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-pekerjaankegiatan.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Pekerjaan Kegiatan</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="ref-tipebangunan.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Tipe Bangunan</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
 <!--                         <a href="refbatal-sspd.php">
                             <div class="panel-footer">
                                 <span class="pull-left">Manajemen Modul</span>

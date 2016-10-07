@@ -117,6 +117,20 @@ if ($_SESSION['ROLE']=="LOKET") {
                                 <div class="clearfix"></div>
                             </div>
                         </a>
+                        <a href="dbkb-material.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">DBKB Material</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="dbkb-standar.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">DBKB Standard</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -97,6 +97,12 @@
             <li>
                 <a href="/admaresi/sismiop/pages/referensi/ref-bahanpagar.php">Bahan Pagar</a>
             </li>
+            <li>
+                <a href="/admaresi/sismiop/pages/referensi/ref-pekerjaan.php">Pekerjaan</a>
+            </li>
+            <li>
+                <a href="/admaresi/sismiop/pages/referensi/ref-pekerjaankegiatan.php">Pekerjaan Kegiatan</a>
+            </li>
         </ul>
       </li>
       <li>
