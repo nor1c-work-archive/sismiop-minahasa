@@ -124,13 +124,13 @@ if ($_SESSION['ROLE']=="LOKET") {
                                 <div class="clearfix"></div>
                             </div>
                         </a>
-                        <a href="../pembayarankelurahan">
+                        <!-- <a href="../pembayarankelurahan">
                             <div class="panel-footer">
                                 <span class="pull-left">Pembayaran PBB per Kelurahan</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>
